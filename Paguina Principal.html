@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Principal</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(120deg, #e0e7ff 0%, #f0f4ff 100%);
+            overflow-x: hidden;
+        }
+        .menu-principal {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: none;
+            position: relative;
+            z-index: 1;
+        }
+        /* Fondo animado con burbujas */
+        .bubbles {
+            position: absolute;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.25;
+            animation: float 12s infinite linear;
+            background: linear-gradient(135deg, #7289da 60%, #99aab5 100%);
+        }
+        .bubble:nth-child(1) { width: 120px; height: 120px; left: 10vw; top: 60vh; animation-delay: 0s;}
+        .bubble:nth-child(2) { width: 80px; height: 80px; left: 80vw; top: 20vh; animation-delay: 2s;}
+        .bubble:nth-child(3) { width: 60px; height: 60px; left: 50vw; top: 80vh; animation-delay: 4s;}
+        .bubble:nth-child(4) { width: 100px; height: 100px; left: 70vw; top: 70vh; animation-delay: 6s;}
+        .bubble:nth-child(5) { width: 90px; height: 90px; left: 30vw; top: 10vh; animation-delay: 8s;}
+        .bubble:nth-child(6) { width: -50px; height: 125px; left: 11vw; top: 62vh; animation-delay: 9s;}
+        @keyframes float {
+            0% { transform: translateY(0) scale(1);}
+            100% { transform: translateY(-200px) scale(1.2);}
+            0% { transform: translateY(0) scale(1);}
+
+        }
+        .menu-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 22px;
+            box-shadow: 0 8px 32px rgba(60,60,100,0.13), 0 1.5px 6px rgba(60,60,100,0.10);
+            padding: 54px 60px;
+            max-width: 950px;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+            margin: 40px 0;
+        }
+        .menu-box {
+            text-align: left;
+            max-width: 420px;
+            flex: 1;
+            position: relative;
+        }
+        .menu-box h1 {
+            font-size: 2.7rem;
+            color: #222;
+            margin-bottom: 18px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            background: linear-gradient(90deg, #7289da 60%, #4caf50 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .menu-box p {
+            font-size: 1.18rem;
+            color: #444;
+            margin-bottom: 32px;
+            line-height: 1.5;
+        }
+        .menu-box a {
+            display: inline-block;
+            background: linear-gradient(90deg, #4caf50, #2196f3 90%);
+            color: #fff;
+            font-size: 1.2rem;
+            padding: 14px 38px;
+            border-radius: 32px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 2px 8px #2196f344;
+            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+            border: none;
+            outline: none;
+            letter-spacing: 0.5px;
+        }
+        .menu-box a:hover {
+            background: linear-gradient(90deg, #388e3c, #1769aa 90%);
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 6px 18px #2196f366;
+        }
+        .menu-box .badge {
+            display: inline-block;
+            background: #7289da;
+            color: #fff;
+            font-size: 0.95rem;
+            padding: 4px 14px;
+            border-radius: 12px;
+            margin-bottom: 14px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 8px #7289da22;
+        }
+        .menu-img {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 260px;
+        }
+        .menu-img img {
+            width: 320px;
+            max-width: 100%;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px #7289da33, 0 1.5px 6px #2196f322;
+            background: #e3e9ff;
+            object-fit: cover;
+            border: 4px solid #fff;
+            transition: transform 0.3s;
+        }
+        .menu-img img:hover {
+            transform: scale(1.04) rotate(-2deg);
+            box-shadow: 0 8px 32px #2196f355;
+        }
+        /* Detalle decorativo tipo código */
+        .code-deco {
+            font-family: 'Fira Mono', 'Consolas', monospace;
+            color: #2196f3;
+            font-size: 1.1rem;
+            background: #e3f2fd;
+            border-radius: 8px;
+            padding: 2px 10px;
+            margin-top: 18px;
+            display: inline-block;
+            box-shadow: 0 1px 4px #2196f322;
+            letter-spacing: 0.5px;
+        }
+        @media (max-width: 900px) {
+            .menu-content {
+                flex-direction: column;
+                padding: 32px 12px;
+                gap: 32px;
+            }
+            .menu-box {
+                text-align: center;
+            }
+            .menu-img {
+                justify-content: center;
+            }
+        }
+        /* Sección de selección de personas */
+        .seleccion-personas {
+            padding: 50px 20px;
+            background: linear-gradient(120deg, #e0e7ff 0%, #f0f4ff 100%);
+
+            text-align: center;
+            margin-top: 40px; /* Agrega esto */
+        }
+
+        .seleccion-personas h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .personas-container {
+            position: absolute;
+            top: 0;
+            left: -30px;
+            width: 100vw;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            transition: transform 0.7s cubic-bezier(.77,0,.18,1), opacity 0.5s;
+            opacity: 1;
+
+        }
+
+        .photo-container {
+            position: relative;
+            width: 28vw;
+            max-width: 500px;
+            min-width: 320px;
+            height: 70vh;
+            max-height: 800px;
+            min-height: 400px;
+            background: #fff;
+            box-shadow:
+                0 12px 32px rgba(0,0,0,0.18),
+                0 2px 12px rgba(0,0,0,0.10) inset;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 24px 24px 36px 24px;
+            margin-bottom: 0;
+            transition: transform 0.3s;
+            justify-content: flex-start;
+        }
+
+        .photo-container:hover {
+            transform: scale(1.05);
+            box-shadow:
+                0 16px 32px rgba(0,0,0,0.22),
+                0 2px 6px rgba(0,0,0,0.13) inset;
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            border-radius: 18px;
+            margin-bottom: 18px;
+            background: #eee;
+            display: block;
+            box-shadow: 0 4px 16px #bbb8;
+            flex: 1 1 auto;
+        }
+
+        .Nombre {
+            margin-top: 0;
+            font-size: 2.2rem;
+            text-align: center;
+            color: #222;
+            font-weight: bold;
+        }
+
+        .pin {
+            position: absolute;
+            top: -10px; /* Ajusta la posición vertical */
+            left: 10px; /* Ajusta la posición horizontal */
+            width: 100px; /* Tamaño del GIF */
+            height: 100px;
+        }
+
+        .pin img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .switch-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+            gap: 10px;
+        }
+        .switch {
+          position: relative;
+          display: inline-block;
+          width: 50px;
+          height: 28px;
+        }
+        .switch input { display: none; }
+        .slider {
+          position: absolute;
+          cursor: pointer;
+          top: 0; left: 0; right: 0; bottom: 0;
+          background: #ccc;
+          transition: .4s;
+          border-radius: 28px;
+        }
+        .slider:before {
+          position: absolute;
+          content: "";
+          height: 20px; width: 20px;
+          left: 4px; bottom: 4px;
+          background: white;
+          transition: .4s;
+          border-radius: 50%;
+          box-shadow: 0 2px 8px #8882;
+        }
+        input:checked + .slider {
+          background: linear-gradient(90deg, #4caf50, #81c784);
+        }
+        input:checked + .slider:before {
+          transform: translateX(22px);
+        }
+        .switch-text {
+            font-size: 1.2rem;
+            color: #333;
+            user-select: none;
+        }
+        .marco-fotos {
+            position: relative;
+            width: 100vw;
+            max-width: 100vw;
+            margin: 0 auto;
+            height: 80vh;
+            min-height: 500px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .personas-container.principal {
+            transform: translateX(0%);
+            z-index: 3;
+        }
+        .personas-container.alternativas {
+            transform: translateX(-100%);
+            opacity: 0;
+            z-index: 2;
+        }
+        .marco-fotos.mostrar-alternativas .personas-container.principal {
+            transform: translateX(100%);
+            opacity: 0;
+            z-index: 1;
+        }
+        .marco-fotos.mostrar-alternativas .personas-container.alternativas {
+            transform: translateX(0%);
+            opacity: 1;
+            z-index: 3;
+        }
+
+        .seleccion-personas.animar {
+            animation: aparecerZoom 0.7s cubic-bezier(.77,0,.18,1);
+        }
+        @keyframes aparecerZoom {
+            from {
+                opacity: 0;
+                transform: scale(0.95) translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+        .logo {
+    height: 64px;
+    width: 220px;
+    background: #222;
+    margin-right: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logo img {
+    max-width: 100%;
+    max-height: 64px;
+    object-fit: contain;
+    display: block;
+}
+.nav-links a,
+.nav-right a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.08rem;
+    padding: 6px 16px;
+    border-radius: 6px;
+    background: #222;
+    border: none;
+    margin: 0 2px;
+    box-shadow: none;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: background 0.2s, color 0.2s;
+    text-shadow: none;
+}
+.nav-links a:hover,
+.nav-right a:hover {
+    background: #ff3333;
+    color: #fff;
+}
+    </style>
+</head>
+<body>
+    <!-- Fondo animado -->
+    <div class="bubbles">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+    <!-- Menú principal decorado -->
+    <div class="menu-principal">
+        <div class="menu-content">
+            <div class="menu-box">
+                <span class="badge">Proyecto de Informática</span>
+                <h1>¡Bienvenido al Menú Principal!</h1>
+                <p>
+                    Explora las opciones del proyecto, selecciona una persona para ver sus fotos o activa el <b>Modo Divertido</b>.<br>
+                    ¡Hecho con pasión por la tecnología y la creatividad!
+                </p>
+                <a href="#seleccion">Seleccionar Persona</a>
+                <div class="code-deco">
+                    &lt;html&gt; &nbsp; &lt;div class="innovacion"&gt;...&lt;/div&gt;
+                </div>
+            </div>
+            <div class="menu-img">
+                <!-- Cambia la ruta de la imagen por la que desees -->
+                <img src="textures/Photos/DoYouWant.jpg" alt="Imagen decorativa del proyecto">
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección de selección de personas -->
+    <div id="seleccion" class="seleccion-personas">
+        <h2>Elige a una Persona</h2>
+        <!-- Switch fuera de las fotos -->
+        <div class="switch-container">
+            <label class="switch">
+                <input type="checkbox" id="mostrar-mas-fotos">
+                <span class="slider"></span>
+            </label>
+            <span class="switch-text">Modo Divertido OwO</span>
+        </div>
+        <div class="marco-fotos">
+            <div class="personas-container principal">
+                <!-- Persona 1 -->
+                <div class="photo-container">
+                    <div class="pin">
+                        <img src="textures/pin/Shika Shikanokonokonokoshitan GIF - Shika Shikanokonokonokoshitan Nokotan - Descobrir e Compartilhar GIFs.gif" alt="Pin decorativo">
+                    </div>
+                    <a href="Usuarios/Anchundia.html" style="text-decoration:none; color:inherit;">
+                        <img src="textures/Photos/AshleyIRL.jpg" alt="Ashley">
+                        <p class="Nombre">Ashley</p>
+                    </a>
+                </div>
+                <!-- Persona 2 -->
+                <div class="photo-container">
+                    <div class="pin">
+                        <img src="textures/pin/HayYa2!.gif" alt="Pin decorativo">
+                    </div>
+                    <a href="Usuarios/MyPag.html" style="text-decoration:none; color:inherit;">
+                        <img src="textures/Photos/Luis.jpg" alt="Luis">
+                        <p class="Nombre">Luis</p>
+                    </a>
+                </div>
+                <!-- Persona 3 -->
+                <div class="photo-container">
+                    <div class="pin">
+                        <img src="textures/pin/NecoSleep.gif" alt="Pin decorativo">
+                    </div>
+                    <a href="Usuarios/Manrique.html" style="text-decoration:none; color:inherit;">
+                        <img src="textures/Photos/ManriqueIRL.jpg" alt="Manrique">
+                        <p class="Nombre">Manrique</p>
+                    </a>
+                </div>
+            </div>
+            <div class="personas-container alternativas">
+                <!-- Persona 1 Alternativa -->
+                <div class="photo-container">
+                    <img src="textures/Photos/Ashley.jpg" alt="Ashley alt 1" class="divertido-video-btn" style="cursor:pointer;">
+                    <p class="Nombre">Ashley</p>
+                </div>
+                <!-- Persona 2 Alternativa -->
+                <div class="photo-container">
+                    <img src="textures/Photos/Luis.jpg" alt="Luis alt 1" class="divertido-video-btn" style="cursor:pointer;">
+                    <p class="Nombre">Luis</p>
+                </div>
+                <!-- Persona 3 Alternativa -->
+                <div class="photo-container">
+                    <img src="textures/Photos/Manrique.jpg" alt="Manrique alt 1" class="divertido-video-btn" style="cursor:pointer;">
+                    <p class="Nombre">Manrique</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="video-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.85); z-index:9999; align-items:center; justify-content:center;">
+    <video id="luis-video" width="720" controls autoplay style="border-radius:18px; box-shadow:0 4px 32px #000;">
+        <source src="Video/NWord.mp4" type="video/mp4">
+        Tu navegador no soporta el video.
+    </video>
+    <button onclick="cerrarVideo()" style="position:absolute; top:40px; right:60px; font-size:2rem; background:#ff3333; color:#fff; border:none; border-radius:12px; padding:8px 24px; cursor:pointer;">Cerrar</button>
+</div>
+    <script>
+    document.getElementById('mostrar-mas-fotos').addEventListener('change', function() {
+        var marco = document.querySelector('.marco-fotos');
+        if (this.checked) {
+            marco.classList.add('mostrar-alternativas');
+        } else {
+            marco.classList.remove('mostrar-alternativas');
+        }
+    });
+
+    document.querySelector('.menu-principal a').addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('seleccion').scrollIntoView({ behavior: 'smooth' });
+    });
+    // Mostrar video al hacer click en la imagen de Luis (modo divertido)
+    document.querySelectorAll('.divertido-video-btn').forEach(function(img) {
+        img.addEventListener('click', function() {
+            document.getElementById('video-modal').style.display = 'flex';
+            var video = document.getElementById('luis-video');
+            video.currentTime = 0;
+            video.play();
+        });
+    });
+
+    function cerrarVideo() {
+        var video = document.getElementById('luis-video');
+        video.pause();
+        document.getElementById('video-modal').style.display = 'none';
+    }
+    </script>
+</body>
+</html>

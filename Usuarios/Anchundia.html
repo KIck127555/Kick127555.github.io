@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mis Vacaciones - Ashley Anchundia</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #ffe0b2, #fff3e6);
+      color: #5d4037;
+      text-align: center;
+      padding: 50px;
+    }
+    .colores {
+  animation: arcoiris 2s infinite;
+}
+
+@keyframes arcoiris {
+  0% { color: red; }
+  25% { color: LightCoral; }
+  50% { color: greenyellow; }
+  75% { color: blueviolet; }
+  100% { color: purple; }
+}
+
+    h1, h2 {
+      color: #8d6e63;
+    }
+
+    h1 {
+      font-size: 2.5em;
+    }
+
+    img {
+      width: 330px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    img:hover {
+      transform: scale(1.07);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    }
+
+    button {
+      background-color: #ffb74d;
+      border: none;
+      color: white;
+      padding: 12px 25px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 30px;
+    }
+
+    button:hover {
+      background-color: #eea70e;
+    }
+
+    #inicio, #vacaciones {
+      display: none;
+    }
+
+    #inicio {
+      display: block;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    table {
+      background-color: #fff8f0;
+      border-collapse: collapse;
+      margin: 30px auto;
+      width: 80%;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+      @keyframes parpadeo {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .parpadeo {
+      animation: parpadeo 1s infinite;
+      color: #d32f2f;
+      font-weight: bold;
+    }
+
+    td {
+      padding: 25px;
+      font-size: 18px;
+    }
+
+    .emoji-title {
+      font-size: 1.3em;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="inicio">
+    <h1 class="colores">👋 ¡Hola! Soy Ashley Anchundia</h1>
+    <p>Haz clic en mi foto para ver lo que hice en mis vacaciones 🏖:</p>
+    <img src="textures/Photos/AshleyIRL.jpg" alt="Mi foto" onclick="mostrarVacaciones()" />
+  </div>
+
+  <div id="vacaciones">
+    <h2 class="emoji-title">🌟 Resumen de MIS VACACIONES 🌟</h2>
+    <table border="0">
+      <tr>
+        <td>
+          <p>
+            Estas vacaciones fueron un poco tranquilas 💤, ya que no planeamos irnos de viaje a un lugar nuevo. Estuve en casa la mayor parte del tiempo, ayudando a mi mamá con la limpieza 🧹.<br><br>
+            En marzo fue el cumpleaños de mi hermano 🎂 e invitamos a nuestros primos más cercanos. ¡Ese día la pasé súper bien con ellos! 🎉<br><br>
+            También vi películas 🍿, series 🎬, y visité a mis abuelitos tanto del lado de mamá como de papá 🏡. <br><br>
+            Y para cerrar las vacaciones, fuimos de viaje en familia con mi papá, mi mamá, mi hermano y mi mascota 🐶.
+            <span class="parpadeo">¡¡CREO QUE NO TODOS LOS DÍAS FUERON ABURRIDOS!! 🤩🎈</span>
+          </p>
+        </td>
+      </tr>
+    </table>
+    <button onclick="mostrarInicio()">🔙 RETORNAR</button>
+  </div>
+
+  <script>
+    function mostrarVacaciones() {
+      document.getElementById('inicio').style.display = 'none';
+      document.getElementById('vacaciones').style.display = 'block';
+    }
+
+    function mostrarInicio() {
+      document.getElementById('vacaciones').style.display = 'none';
+      document.getElementById('inicio').style.display = 'block';
+    }
+  </script>
+</body>
+</html>

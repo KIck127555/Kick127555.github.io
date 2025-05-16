@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIERRAZOMBIE - The Dead Coast</title>
+    <style>
+        body {
+            margin: 0;
+            background: #222;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: #fff;
+        }
+        .navbar {
+            background: #222;
+            display: flex;
+            align-items: center;
+            padding: 0 32px;
+            height: 90px;
+            box-shadow: 0 2px 8px #0008;
+        }
+        .logo {
+            height: 64px;
+            width: 220px;
+            background: #222;
+            margin-right: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo img {
+            max-width: 100%;
+            max-height: 164px;
+            object-fit: contain;
+            display: block;
+        }
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            flex: 1;
+        }
+        .nav-links a,
+        .nav-right a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.08rem;
+            padding: 6px 16px;
+            border-radius: 6px;
+            background: #222;
+            border: none;
+            margin: 0 2px;
+            box-shadow: none;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: background 0.2s, color 0.2s;
+            text-shadow: none;
+        }
+        .nav-links a:hover,
+        .nav-right a:hover {
+            background: #ff3333;
+            color: #fff;
+        }
+        .nav-right {
+            display: flex;
+            gap: 18px;
+            align-items: center;
+        }
+        .main-banner {
+            width: 100%;
+            height: 540px;
+            background: #333;
+            position: relative;
+            overflow: hidden;
+        }
+        .main-banner img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            opacity: 0.9;
+        }
+        .banner-content {
+            position: absolute;
+            left: 40px;
+            bottom: 40px;
+            background: rgba(20, 20, 20, 0.95);
+            border: 3px solid #ff3333;
+            box-shadow: 0 0 32px #000c, 0 0 12px #ff333355;
+            color: #fff;
+            text-shadow: 2px 2px 8px #000a, 0 0 4px #ff333355;
+            border-radius: 18px;
+            padding: 32px 32px 24px 32px;
+            max-width: 380px;
+            min-width: 240px;
+            min-height: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            z-index: 2;
+        }
+        .banner-title {
+            font-size: 2.2rem;
+            font-family: 'Impact', 'Segoe UI', Arial, sans-serif;
+            color: #ff3333;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            text-shadow: 2px 2px 12px #000a, 0 0 8px #ff333355;
+        }
+        .banner-desc {
+            font-size: 1.1rem;
+            color: #eee;
+            margin-bottom: 22px;
+            line-height: 1.5;
+        }
+        .apocaliptic-btn {
+            margin-top: 8px;
+            padding: 14px 36px;
+            background: linear-gradient(90deg, #ff3333 0%, #222 100%);
+            color: #fff;
+            border: 2px solid #ff3333;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-weight: bold;
+            box-shadow: 0 2px 12px #000a, 0 0 8px #ff333355;
+            transition: 
+                background 0.2s, 
+                color 0.2s, 
+                border 0.2s, 
+                transform 0.15s;
+            text-shadow: 1px 1px 4px #000a;
+            letter-spacing: 1px;
+            outline: none;
+        }
+        .apocaliptic-btn:hover {
+            background: #222;
+            color: #ff3333;
+            border: 2px solid #fff;
+            transform: scale(1.08) rotate(1deg);
+            box-shadow: 0 4px 16px #ff333388, 0 2px 8px #000a;
+        }
+        @media (max-width: 700px) {
+            .navbar { flex-direction: column; height: auto; padding: 12px; }
+            .logo { margin: 0 0 12px 0; }
+            .main-banner { height: 220px; }
+            .banner-content { left: 10px; bottom: 10px; padding: 16px; max-width: 95vw; }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <img src="textures/Logos/TZ Logo_preview_rev_1.png" alt="Logo">
+        </div>
+        <div class="nav-links">
+            <a href="#">JUEGOS</a>
+            <a href="#">TIENDA</a>
+            <a href="#">COMUNIDAD</a>
+            <a href="#">SOPORTE TÉCNICO</a>
+        </div>
+        <div class="nav-right">
+            <a href="#">BUSCAR</a>
+            <a href="#">CUENTA</a>
+        </div>
+    </div>
+    <div class="main-banner">
+        <img src="textures/Logos/Sin título-1.png" alt="Banner de fondo">
+        <div class="banner-content">
+            <div class="banner-title">PROYECTO!<br><span style="font-size:1.1rem; color:#ff3333;">¿Qué hiciste en las vacaciones?</span></div>
+            <div class="banner-desc">
+                ¡Esto del HTML y CSS está quemado!<br>
+                Así que mejor usé JSON UI... (Estoy muerto).<br>
+                <span style="color:#ff3333; font-weight:bold;">¿Estás listo para entrar?</span>
+            </div>
+            <button class="apocaliptic-btn" onclick="window.location.href='https://add.aternos.org/ProyectosLocos'">
+                Ingresar al servidor
+            </button>
+        </div>
+    </div>
+</body>
+</html>
